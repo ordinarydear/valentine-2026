@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Valentine 💘</title>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fff5fa, #ffeaf4);
+  font-family: 'Quicksand', sans-serif;
+  overflow: hidden;
+}
+
+.heart {
+  position: fixed;
+  bottom: -20px;
+  color: rgba(255, 105, 180, 0.4);
+  animation: floatUp 8s linear infinite;
+  font-size: 20px;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+.container {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 20px;
+}
+
+/* MAIN TITLE */
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
+  margin-bottom: 20px;
+  color: #ff4f9a;
+  white-space: nowrap;   /* Force one line */
+}
+
+.subtext {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  margin-block-start: 0.5rem;
+  margin-bottom: 30px;
+}
+
+img {
+  width: 80%;
+  max-width: 700px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* Side by side layout */
+.flex-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.qr img {
+  max-width: 450px;
+}
+
+.plan {
+  background: rgba(255,255,255,0.6);
+  padding: 20px;
+  border-radius: 20px;
+  min-width: 250px;
+  text-align: left;
+}
+
+.plan h2 {
+  margin-top: 0;
+}
+
+.plan ul {
+  list-style: none;
+  padding: 0;
+  font-size: 0.95rem;
+}
+
+.status {
+  margin-top: 15px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.upgrade-btn {
+  margin-top: 50px;
+  background-color: #7a5cff;
+  color: white;
+  padding: 20px 25px;
+  border-radius: 32px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.buttons {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  padding: 14px 30px;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+#yesBtn {
+  background-color: #ff6fa5;
+  color: white;
+}
+
+#noBtn {
+  background-color: #444;
+  color: white;
+}
+
+#finalScreen {
+  display: none;
+  max-width: 900px;
+}
+
+.bottom-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.status {
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.upgrade-btn {
+  background-color: #7a5cff;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  .flex-section {
+    flex-direction: column;
+  }
+
+  h1 {
+    white-space: normal; /* Allow wrap on small screen */
+    text-align: center;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container" id="mainScreen">
+  <h1>💌 Will you be my valentine?</h1>
+  <img src="joey.png" alt="Joey Meme" />
+  <div class="buttons">
+    <button id="yesBtn">YES 😍</button>
+    <button id="noBtn">No 🙄</button>
+  </div>
+</div>
+
+<div class="container" id="finalScreen">
+  <h1>Happy Valentine’s Day Mr. Big 💕</h1>
+  <p class="subtext">I knew you’d say yes 😌</p>
+
+  <div class="flex-section">
+    
+    <!-- LEFT: QR -->
+    <div class="qr">
+      <img src="qr.png" alt="QR Code">
+    </div>
+
+    <!-- RIGHT: PLAN -->
+    <div class="plan">
+      <h2>💎 Premium Girlfriend Plan</h2>
+      <p><strong>Duration: 1 Year (Auto-Renewable 😌)</strong></p>
+      <ul>
+        <li>✅ Unlimited hugs (non-refundable)</li>
+        <li>✅ Emotional support hotline (24/7 availability*)</li>
+        <li>✅ ROV Partner (You can only play support)</li>
+        <li>✅ Professional overthinking services</li>        
+        <li>✅ Outfit approval access</li>
+        <li>✅ Baby mode</li>
+        <li>✅ Mood Swing Expansion Pack (included free)</li>
+        <li>✅ Pattaya Ping Pong Show Date Companion 🎯</li>
+      </ul>
+    </div>
+
+  </div>
+
+    <button class="upgrade-btn" id="upgradeBtn">
+      Upgrade to 999 THB Plan
+    </button>
+      <!-- CENTER BOTTOM SECTION -->
+  <div class="bottom-section">
+    <div class="status" id="statusText">
+      Status: Awaiting Payment…
+    </div>
+  </div>
+
+</div>
+
+
+<!-- <audio id="bgMusic" src="careless-whisper.mp3"></audio> -->
+<audio id="bgMusic" src="https://files.catbox.moe/7w1wsc.mp3" preload="auto" loop></audio>
+
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const finalScreen = document.getElementById("finalScreen");
+const mainScreen = document.getElementById("mainScreen");
+const music = document.getElementById("bgMusic");
+const statusText = document.getElementById("statusText");
+const upgradeBtn = document.getElementById("upgradeBtn");
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💗";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+  heart.style.animationDuration = (Math.random() * 5 + 5) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 8000);
+}
+setInterval(createHeart, 500);
+
+noBtn.addEventListener("mouseover", () => {
+  const btnWidth = noBtn.offsetWidth;
+  const btnHeight = noBtn.offsetHeight;
+  const maxX = window.innerWidth - btnWidth;
+  const maxY = window.innerHeight - btnHeight;
+  noBtn.style.position = "fixed";
+  noBtn.style.left = Math.random() * maxX + "px";
+  noBtn.style.top = Math.random() * maxY + "px";
+});
+
+yesBtn.addEventListener("click", () => {
+  confetti({ particleCount: 200, spread: 120, origin: { y: 0.6 } });
+  mainScreen.style.display = "none";
+  finalScreen.style.display = "block";
+
+  setTimeout(() => {
+    statusText.innerText = "Status: Payment Confirmed ✅ Valentine Locked In 💖";
+  }, 3000);
+
+  setTimeout(() => {
+    music.currentTime = 0;
+    music.play();
+  }, 300);
+});
+
+upgradeBtn.addEventListener("click", () => {
+  alert("Nice try. 520 is enough. I love you. 💕");
+});
+</script>
+
+</body>
+</html>
